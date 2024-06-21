@@ -60,7 +60,7 @@ epoch-time-api/
    ```sh
     Outputs:
     
-    api_url = "API accessible at: https://epoch-time-api.coffee-sandbox.medcrypt.co/epoch"
+    api_url = "API accessible at: https://epoch-time-api.coffee-sandbox.xxxxx.co/epoch"
     ecs_cluster_name = "epoch-time-api-cluster"
     ecs_service_name = "epoch-time-api-service"
     load_balancer_dns_name = "epoch-time-api-lb-2101495011.us-east-2.elb.amazonaws.com"
@@ -119,10 +119,9 @@ By following these instructions, you should be able to deploy the epoch time API
 
 ## Terraform plan
 ```hcl
-mayurnarang@mayurs-MacBook-Pro terraform % terraform plan
 data.aws_caller_identity.current: Reading...
 data.aws_caller_identity.current: Still reading... [10s elapsed]
-data.aws_caller_identity.current: Read complete after 10s [id=432684854155]
+data.aws_caller_identity.current: Read complete after 10s [id=xxxx]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
@@ -166,8 +165,8 @@ Terraform will perform the following actions:
           + assign_public_ip = false
           + security_groups  = (known after apply)
           + subnets          = [
-              + "subnet-01f64415c6b1c40e8",
-              + "subnet-0d96a08289af52d26",
+              + "xxxx",
+              + "xxxx",
             ]
         }
     }
@@ -179,7 +178,7 @@ Terraform will perform the following actions:
             [
               + {
                   + essential        = true
-                  + image            = "432684854155.dkr.ecr.us-east-2.amazonaws.com/epoch-time-api:latest"
+                  + image            = "xxxx.dkr.ecr.us-east-2.amazonaws.com/epoch-time-api:latest"
                   + logConfiguration = {
                       + logDriver = "awslogs"
                       + options   = {
@@ -295,8 +294,8 @@ Terraform will perform the following actions:
       + name                       = "epoch-time-api-lb"
       + security_groups            = (known after apply)
       + subnets                    = [
-          + "subnet-0648ae8f9ca4193fe",
-          + "subnet-0c083c6a72e5a238c",
+          + "xxxx",
+          + "xxxx",
         ]
       + tags_all                   = (known after apply)
       + vpc_id                     = (known after apply)
@@ -331,7 +330,7 @@ Terraform will perform the following actions:
   # aws_lb_listener.https_listener will be created
   + resource "aws_lb_listener" "https_listener" {
       + arn               = (known after apply)
-      + certificate_arn   = "arn:aws:acm:us-east-2:432684854155:certificate/29cd5dc7-c222-4da1-9a78-fcc95d36125e"
+      + certificate_arn   = "arn:aws:acm:xxxx:certificate/xxxx"
       + id                = (known after apply)
       + load_balancer_arn = (known after apply)
       + port              = 443
@@ -364,7 +363,7 @@ Terraform will perform the following actions:
       + slow_start                         = 0
       + tags_all                           = (known after apply)
       + target_type                        = "ip"
-      + vpc_id                             = "vpc-07156ee372714c64e"
+      + vpc_id                             = "xxxx"
 
       + health_check {
           + enabled             = true
@@ -386,7 +385,7 @@ Terraform will perform the following actions:
       + id              = (known after apply)
       + name            = "epoch-time-api"
       + type            = "A"
-      + zone_id         = "Z0868847ZD5VKHNCYBDG"
+      + zone_id         = "xxxx"
 
       + alias {
           + evaluate_target_health = true
@@ -433,7 +432,7 @@ Terraform will perform the following actions:
       + owner_id               = (known after apply)
       + revoke_rules_on_delete = false
       + tags_all               = (known after apply)
-      + vpc_id                 = "vpc-07156ee372714c64e"
+      + vpc_id                 = "xxxx"
     }
 
   # aws_security_group.lb_sg[0] will be created
@@ -489,7 +488,7 @@ Terraform will perform the following actions:
       + owner_id               = (known after apply)
       + revoke_rules_on_delete = false
       + tags_all               = (known after apply)
-      + vpc_id                 = "vpc-07156ee372714c64e"
+      + vpc_id                 = "xxxx"
     }
 
 Plan: 12 to add, 0 to change, 0 to destroy.
@@ -501,14 +500,3 @@ Changes to Outputs:
   + load_balancer_dns_name = (known after apply)
 
 ```
-
-## Testing via UI and Curl:
-
-```sh
-curl https://<route43-dns-record-name>/epoch
-```
-<img width="1066" alt="Screenshot 2024-06-19 at 3 17 04 PM" src="https://github.com/mayur9099/epoch-time-api/assets/16243940/61a4f59a-68c7-454d-a5ab-bdb633c43428">
-
-<img width="1047" alt="Screenshot 2024-06-19 at 3 17 35 PM" src="https://github.com/mayur9099/epoch-time-api/assets/16243940/3bbef002-3f0a-484c-95cf-fb29204f44fa">
-
-
